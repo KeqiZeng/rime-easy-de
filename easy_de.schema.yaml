@@ -1,0 +1,96 @@
+# Rime schema
+# encoding: utf-8
+#
+
+schema:
+  schema_id: easy_de
+  name: Easy German
+  version: "0.1"
+  author:
+    - ketch
+    - name from BlindingDark <blindingdark@outlook.com> thx!
+  description:
+    Easy German Input Method
+
+engine:
+  processors:
+    # - ascii_composer
+    - key_binder
+    - speller
+    - recognizer
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    # - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    # - table_translator
+    - punct_translator
+  # filters:
+  #   - uniquifier
+
+speller:
+  # alphabet: advs # äöüß
+  alphabet: /
+  initials: /
+  delimiter: " '"
+
+punctuator:
+  full_shape:
+  half_shape:
+    "!": {commit: "!"}
+    "\"": {pair: ["„", "“"]}
+    "#": "#"
+    "$": "$"
+    "%": "%"
+    "&": "&"
+    "^": "^"
+    "'": "'"
+    "(": "("
+    ")": ")"
+    "*": "*"
+    ",": {commit: ","}
+    "-": "-"
+    _: "_"
+    "=": "="
+    "+": "+"
+    .: {commit: "."}
+    "/": "/"
+    ":": {commit: ":"}
+    ";": {commit: ";"}
+    "<": "<"
+    ">": ">"
+    "?": {commit: "?"}
+    "@": "@"
+    "[": "["
+    "\\": "\\"
+    "]": "]"
+    "`": "`"
+    "{": "{"
+    "|": "|"
+    "}": "}"
+    "~": "~"
+
+  symbols:
+    "/A": ["Ä"]
+    "/C": ["Ö"]
+    "/V": ["Ü"]
+    "/a": ["ä"]
+    # "/o": ["ö"]
+    "/c": ["ö"]
+    "/v": ["ü"]
+    "/s": ["ß"]
+
+recognizer:
+  # import_preset: default
+  patterns:
+    punct: "^/([0-9]0?|[A-Za-z]+)$"
+
+translator:
+  dictionary: none
+  enable_user_dict: false
